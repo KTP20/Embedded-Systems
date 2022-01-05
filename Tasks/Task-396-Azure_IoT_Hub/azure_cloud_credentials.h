@@ -14,7 +14,8 @@ namespace credentials {
 
 // Use https://dpsgen.z8.web.core.windows.net/ to obtain YOUR connection string
 // This one will not work, but I guess you knew that ;)
-char iothub_connection_string[] = "HostName=blahblahblah=";
+//                                 HostName=iotc-fbab197f-edaf-440b-a90a-fff2e43d3ec1.azure-devices.netDeviceId=fvgk75mov7;SharedAccessKey=mcmDDGOzTkINwERiEUOgWeMQjD7gT1rSVu+WeGTYK6o=
+char iothub_connection_string[] = "HostName=iotc-fbab197f-edaf-440b-a90a-fff2e43d3ec1.azure-devices.net;DeviceId=fvgk75mov7;SharedAccessKey=mcmDDGOzTkINwERiEUOgWeMQjD7gT1rSVu+WeGTYK6o=";
 }
 }
 #endif

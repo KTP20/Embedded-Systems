@@ -25,7 +25,7 @@ int main()
     printf("\r\nBasic TCP server example\r\n");
     
     // Connect the ethernet interface
-    // net.set_network(IP, NETMASK, GATEWAY);  //For static IP
+    // net.set_network("192.168.0.2", "255.255.255.0", "192.168.1.1");  //For static IP
     net.connect();
 
     // Get the network address
@@ -65,10 +65,10 @@ int main()
         // ACCEPT Accepting connections
         TCPSocket* clt_sock=socket.accept();    //Blocking
         printf("Connected accepted\n");
-
+        disp.cls();
         //Unblocks with each connection
-        disp.locate(1, 0);
-        disp.printf("Connected...");
+        //disp.locate(1, 0);
+        //disp.printf("Connected...");
 
         //Read request
         string rx;
@@ -76,6 +76,12 @@ int main()
         nsapi_size_or_error_t N = clt_sock->recv(rxBuffer, sizeof(rxBuffer)-1);   //Read (upto) 64 bytes
         rxBuffer[N] = 0;
         printf("%s\n", rxBuffer);
+
+        disp.cls();
+        //disp.printf("%s\n", a.get_ip_address() ? a.get_ip_address() : "None");
+        //disp.locate(1,0);
+        disp.printf("%s\n", rxBuffer);
+
         rx = string(rxBuffer);             //String response as C++ string
 
         if (rx == "END") {                      //Are we done?

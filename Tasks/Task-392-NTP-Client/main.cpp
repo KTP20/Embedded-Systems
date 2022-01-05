@@ -7,27 +7,35 @@ using namespace uop_msb;
 
 #include "EthernetInterface.h"
 #include "TCPSocket.h"
-#include "NTPClient.h"
+//#include "NTPClient.h"
+#include "NTPTimeStamp.h"
 #include <iostream>
 using namespace std;
 
 //const char *const myHTTP = HTTP_RESPONSE; //This if you wish to set above Compiler defines into Flash Silicon
 
-NetworkInterface* netIF;
-LCD_16X2_DISPLAY disp;
-DigitalOut lcdBacklight(LCD_BKL_PIN,1);
-InterruptIn blueButton(USER_BUTTON);
 
 int main()
 {
+    NTPTimeStamp();
+    GetTimeLCD();
+
+}
+
+
+/*
+int main()
+{
+    printf("start\n");
     // Create network interface (Ethernet in our case)    
     netIF = NetworkInterface::get_default_instance();
     if (netIF == nullptr) {
         printf("No network interface found\n");
         return -1;
     }
-
+    printf("network found\n");
     // Connect
+    //netIF->set_network("192.168.0.2", "255.255.255.0", "192.168.1.1");  //For static IP
     int ret = netIF->connect();
     if (ret != 0) {
         printf("Connection error: %d\n", ret);
@@ -38,8 +46,10 @@ int main()
 
     // Instantiate a NPTClient using the connected interface
     NTPClient ntp(netIF);
+    printf("NPTClient initiatied\n");
     // Configure for a public time server
     ntp.set_server("time.google.com", 123);
+
 
     // Get the time
     time_t timestamp = ntp.get_timestamp();
@@ -81,3 +91,4 @@ int main()
 
 }
  
+*/
